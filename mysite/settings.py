@@ -39,11 +39,9 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'drf_yasg',
-    'rest_framework',
-    'rest_framework_swagger',
+    'crispy_forms',
     'melanoma_classifier',
-    'cloudinary',
+    'crispy_bootstrap5',
 ]
 
 MIDDLEWARE = [
@@ -62,7 +60,7 @@ ROOT_URLCONF = 'mysite.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [],
+        'DIRS': [BASE_DIR/'templates'],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
@@ -78,12 +76,6 @@ TEMPLATES = [
 WSGI_APPLICATION = 'mysite.wsgi.application'
 
 
-cloudinary.config( 
-  cloud_name = "dhkv5hazp", 
-  api_key = "635657828916684", 
-  api_secret = "QCuzVrENzC7KHPJsc25I7tqO_4Y" 
-)
-DEFAULT_FILE_STORAGE='cloudinary_storage.storage.MediaCloudinaryStorage'
 MODEL = os.path.join(BASE_DIR, 'ml/model')
 
 # Database
@@ -132,20 +124,14 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/4.1/howto/static-files/
 
 STATIC_URL = 'static/'
+MEDIA_URL='media/'
 STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
-
+MEDIA_ROOT=os.path.join(BASE_DIR,'media')
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/4.1/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
-REST_FRAMEWORK={
-    "DEFAULT_PAGINSTION_CLASS":"rest_framework.pagination.LimitOffsetPagination",
-    "PAGE_SIZE":10
-}
-
-SWAGGER_SETTINGS={
-    'DEFAULT_INFO':'mysite.api.urls.swagger_info',
-    'USE_SESSION_AUTH':False,
-}
+CRISPY_ALLOWED_TEMPLATE_PACKS = "bootstrap5"
+CRISPY_TEMPLATE_PACK = 'bootstrap5'

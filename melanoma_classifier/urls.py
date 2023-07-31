@@ -1,5 +1,5 @@
 from django.urls import path
-from .views import UploadView
+from .views import mainView
 urlpatterns=[
-    path('upload/', UploadView.as_view(), name = 'prediction'),
+    path('upload/', mainView, name = 'prediction'),
 ]
